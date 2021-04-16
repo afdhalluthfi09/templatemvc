@@ -1,0 +1,14 @@
+#buat role yang akan mengatur pemanggilan file/folder agar tidak ambigu
+Options -Multiviews
+
+#mengaktifkan pemfilteran  file dan folder
+RewriteEngine On
+
+#melakuakan role pemfilteran folder
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#melakukan role pemfilteran file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#melakuan RegEx()
+RewriteRule ^(.*)$ index.php?b=$1 [L]
