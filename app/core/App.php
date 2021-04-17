@@ -31,7 +31,7 @@ class App{
         require_once '../app/controllers/'. $this->controller.'.php'; 
         $this->controller = new $this->controller;
 
-         /* 🧪 mencoba testing part 3.1 method */
+         /* 🧪 mencoba testing part 3.2 method */
         if(isset($url[1]))
         {
             if(method_exists($this->controller,$url[1]))
@@ -43,6 +43,15 @@ class App{
                 // echo '</pre>';
             }
         }
+
+         /* 🧪 mencoba testing part 3.3 param */
+         if(!empty($url))
+         {
+             $this->param = array_values($url); //array_values(): berguna untuk mengisi value pada sebuah array[] kosong
+         }
+
+        /* 🧪 mencoba testing part 4 menjalankan controller dan method yang sudah dibuat*/
+        call_user_func_array([$this->controller,$this->method],$this->param); 
     }
 
     /* 🐱‍👤 jutsu pembersihan url agar tidak mudah diretas */
